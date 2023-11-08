@@ -104,7 +104,7 @@ mae(catelyn,arya).
 mae(catelyn,brandon_II).
 mae(catelyn,rickon).
 mae(catelyn,theon_greyjoy).
-mae(catelyn,jon_snow).
+mae(lyanna,jon_snow).
 
 casados(eddard,catelyn).
 casados(catelyn,eddard).
@@ -116,6 +116,69 @@ casados(ramsay_bolton,sansa).
 casados(sansa,ramsay_bolton).
 
 casas_relacionadas(X,Y) :- casados(W,Z), casa(W,X), casa(Z,Y).
+
+%TARGARYEN
+casa(aegon_I,house_targaryen).
+casa(maekar_I,house_targaryen).
+casa(maester_aemon,house_targaryen).
+casa(aegon_V,house_targaryen).
+casa(jaehaerys_II,house_targaryen).
+casa(rhaelle,house_targaryen).
+casa(aerys_II,house_targaryen).
+casa(rhaegar,house_targaryen).
+casa(viserys,house_baratheon).
+casa(daenerys,house_baratheon).
+casa(jon_snow,house_targaryen).
+
+pai(maekar_I,maester_aemon).
+pai(maekar_I,aegon_V).
+pai(aegon_V,jaehaerys_II).
+pai(aegon_V,rhaelle).
+pai(aerys_II,rhaegar).
+pai(aerys_II,viserys).
+pai(aerys,daenerys).
+pai(rhaegar,jon_snow).
+pai(rhaegar,raenys).
+pai(rhaegar,aegon).
+
+mae(rhaelle,steffon).
+
+%BARATHEON
+casa(ormund,house_baratheon).
+casa(steffon,house_baratheon).
+casa(robert,house_baratheon).
+casa(stannis,house_baratheon).
+casa(renly,house_baratheon).
+casa(shireen,house_baratheon).
+casa(joffrey,house_baratheon).
+casa(myrcella,house_baratheon).
+casa(tommen,house_baratheon).
+
+local(ormund,stormlands).
+local(steffon,stormlands).
+local(robert,stormlands).
+local(stannis,stormlands).
+local(renly,stormlands).
+local(shireen,stormlands).
+local(joffrey,stormlands).
+local(myrcella,stormlands).
+local(tommen,stormlands).
+
+pai(ormund,steffon).
+pai(steffon,robert).
+pai(steffon,stannis).
+pai(steffon,renly).
+pai(stannis,shireen).
+pai(robert,joffrey).
+pai(robert,myrcella).
+pai(robert,tommen).
+
+casados(ormund,rhaelle).
+casados(rhaelle,ormund).
+casados(robert,cersei).
+casados(cersei,robert).
+
+casas_relacioandas(X,Y) :- casados(W,Z), casa(W,X), casa(Z,Y).
 
 %LANNISTER
 casa(tywin,house_lannister).
@@ -130,12 +193,14 @@ local(jaime,westerland).
 local(cersei,westerland).
 
 pai(jaime,joffrey).
-pai(robert,joffrey).
+pai(jaime,myrcella0).
+pai(jaime,tommen).
 
 mae(cersei,joffrey).
+mae(cersei,myrcella).
+mae(cersei,tommen).
 
 casados(jaime,cersei).
-casados(robert,cersei).
 casados(tywin,joanna).
 
 casas_relacioandas(X,Y) :- casados(W,Z), casa(W,X), casa(Z,Y).
@@ -155,6 +220,12 @@ mae(olenna,mace).
 
 casados(luthor,olenna).
 casados(olenna,luthor).
+casados(renly,magaery).
+casados(margaery,renly).
+casados(joffrey,margaery).
+casados(margaery,joffrey).
+casados(tommen,margaery).
+casados(margaery,tommen).
 
 %MARTELL
 casa(doran,house_martell).
@@ -171,6 +242,9 @@ local(sand_snakes,dorne).
 
 pai(doran,trystane).
 pai(oberyn,sand_snakes).
+
+mae(elia,raenys).
+mae(elia,aegon).
 
 casados(rhaegar,elia).
 casados(elia,rhaegar).
