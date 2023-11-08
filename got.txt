@@ -1,0 +1,178 @@
+%casa(X,Y): X pertence a casa Y.
+%local(X,Y): X vive em Y.
+%pai(X,Y): X é pai de Y.
+%mae(X,Y): X é mãe de Y.
+%irmao(X,Y): Retorna verdadeiro caso X e Y possuam o mesmo pai ou a
+% mesma mãe.
+%descendende(X,Y): Retorna verdadeiro caso Y seja descendente de X.
+%casados(X,Y): Retorna verdadeiro caso X e Y sejam casados, foram casados
+% ou tiveram um filho.
+%casas_relacionadas(X,Y): retorna verdadeiro se X e Y são casas entre as
+% quais ocorreu um casamento.
+
+:- discontiguous casa/2.
+:- discontiguous local/2.
+:- discontiguous pai/2.
+:- discontiguous mae/2.
+:- discontiguous casados/2.
+:- discontiguous casas_relacionadas/2.
+:- discontiguous descendente/2.
+
+
+%ARRYN
+casa(jon,house_arryn).
+casa(robin,house_arryn).
+
+local(jon,the_vale).
+local(robin,the_vale).
+
+pai(jon,robin).
+
+mae(lysa,robin).
+
+casados(jon,lysa).
+casados(lysa,jon).
+casados(little_finger,lysa).
+casados(lysa,little_finger).
+
+casas_relacionadas(X,Y) :- casados(W,Z), casa(W,X), casa(Z,Y).
+
+descendente(hoster,robin).
+
+%SEM CASA
+pai(walder_frey,rosan_frey).
+pai(roose_bolton,ramsay_bolton).
+pai(balon_greyjoy,theon_greyjoy).
+
+%TULLY
+casa(hoster,house_tully).
+casa(lysa,house_tully).
+casa(edmure,house_tully).
+casa(catelyn,house_tully).
+
+local(hoster,the_riverlands).
+local(lysa,the_riverlands).
+local(edmure,the_riverlands).
+local(catelyn,the_riverlands).
+
+pai(hoster,lysa).
+pai(hoster,edmure).
+pai(hoster,catelyn).
+
+casados(edmure,rosan_frey).
+casados(rosan_frey,edmure).
+
+%STARK
+casa(rickard,house_stark).
+casa(brandon,house_stark).
+casa(eddard,house_stark).
+casa(benjen,house_stark).
+casa(lyanna,house_stark).
+casa(robb,house_stark).
+casa(sansa,house_stark).
+casa(arya,house_stark).
+casa(brandon_II,house_stark).
+casa(rickon,house_stark).
+
+local(rickard,the_north).
+local(brandon,the_north).
+local(eddard,the_north).
+local(benjen,the_north).
+local(lyanna,the_north).
+local(robb,the_north).
+local(sansa,the_north).
+local(arya,the_north).
+local(brandon_II,the_north).
+local(rickon,the_north).
+
+pai(rickard,brandon).
+pai(rickard,eddard).
+pai(rickar,benjen).
+pai(rickard,lyanna).
+
+pai(eddard,robb).
+pai(eddard,sasa).
+pai(eddard,arya).
+pai(eddard,brandon_II).
+pai(eddard,rickon).
+pai(eddard,theon_greyjoy).
+pai(eddard,jon_snow).
+
+mae(catelyn,robb).
+mae(catelyn,sansa).
+mae(catelyn,arya).
+mae(catelyn,brandon_II).
+mae(catelyn,rickon).
+mae(catelyn,theon_greyjoy).
+mae(catelyn,jon_snow).
+
+casados(eddard,catelyn).
+casados(catelyn,eddard).
+casados(rhaegar,lyanna).
+casados(lyanna,rhaegar).
+casados(robb,talisa).
+casados(talisa,robb).
+casados(ramsay_bolton,sansa).
+casados(sansa,ramsay_bolton).
+
+casas_relacionadas(X,Y) :- casados(W,Z), casa(W,X), casa(Z,Y).
+
+%LANNISTER
+casa(tywin,house_lannister).
+casa(joanna,house_lannister).
+casa(jaime,house_lannister).
+casa(cersei,house_lannister).
+casa(tyrion,house_lannister).
+
+local(tywin,westerland).
+local(joanna,westerland).
+local(jaime,westerland).
+local(cersei,westerland).
+
+pai(jaime,joffrey).
+pai(robert,joffrey).
+
+mae(cersei,joffrey).
+
+casados(jaime,cersei).
+casados(robert,cersei).
+casados(tywin,joanna).
+
+casas_relacioandas(X,Y) :- casados(W,Z), casa(W,X), casa(Z,Y).
+
+%TYRELL
+casa(luthor,house_tyrell).
+casa(olenna,house_tyrel).
+casa(mace,house_tyrell).
+casa(margaery,house_tyrell).
+casa(loras,house_tyrell).
+
+pai(luthor,mace).
+pai(mace,margaery).
+pai(mace,loras).
+
+mae(olenna,mace).
+
+casados(luthor,olenna).
+casados(olenna,luthor).
+
+%MARTELL
+casa(doran,house_martell).
+casa(oberyn,house_martell).
+casa(elia,house_martell).
+casa(trystane,house_martell).
+casa(sand_snakes,house_martell).
+
+local(doran,dorne).
+local(oberyn,dorne).
+local(elia,dorne).
+local(trystane,dorne).
+local(sand_snakes,dorne).
+
+pai(doran,trystane).
+pai(oberyn,sand_snakes).
+
+casados(rhaegar,elia).
+casados(elia,rhaegar).
+
+casas_relacioandas(X,Y) :- casados(W,Z), casa(W,X), casa(Z,Y).
