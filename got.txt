@@ -3,6 +3,7 @@
 :- discontiguous pai/2.
 :- discontiguous mae/2.
 :- discontiguous casados/2.
+:- discontiguous casamento/2.
 :- discontiguous casas_relacionadas/2.
 :- discontiguous descendente/2.
 
@@ -21,10 +22,10 @@ mae(lysa,robin).
 
 casados(jon,lysa).
 casados(lysa,jon).
-casados(little_finger,lysa).
-casados(lysa,little_finger).
+casamento(little_finger,lysa).
+casamento(lysa,little_finger).
 
-descendente(hoster,robin).
+descendente(robin,hoster).
 
 %SEM CASA
 pai(walder_frey,rosan_frey).
@@ -46,8 +47,8 @@ pai(hoster,lysa).
 pai(hoster,edmure).
 pai(hoster,catelyn).
 
-casados(edmure,rosan_frey).
-casados(rosan_frey,edmure).
+casamento(edmure,rosan_frey).
+casamento(rosan_frey,edmure).
 
 %STARK
 casa(rickard,house_stark).
@@ -97,23 +98,22 @@ casados(eddard,catelyn).
 casados(catelyn,eddard).
 casados(rhaegar,lyanna).
 casados(lyanna,rhaegar).
-casados(robb,talisa).
-casados(talisa,robb).
-casados(ramsay_bolton,sansa).
-casados(sansa,ramsay_bolton).
+casamento(robb,talisa).
+casamento(talisa,robb).
+casamento(ramsay_bolton,sansa).
+casamento(sansa,ramsay_bolton).
 
-descendente(hoster,robb).
-descendente(rickard,robb).
-descendente(hoster,sansa).
-descendente(rickard,sansa).
-descendente(hoster,arya).
-descendente(rickard,arya).
-descendente(hoster,brandon_II).
-descendente(rickard,brandon_II).
-descendente(hoster,rickon).
-descendente(rickard,rickon).
-descendente(hoster,jon_snow).
-descendente(rickard,jon_snow).
+descendente(robb,rickard).
+descendente(robb,hoster).
+descendente(sansa,rickard).
+descendente(sansa,hoster).
+descendente(arya,rickard).
+descendente(arya,hoster).
+descendente(brandon_II,rickard).
+descendente(brandon_II,hoster).
+descendente(rickon,rickard).
+descendente(rickon,hoster).
+descendente(jon_snow,rickard).
 
 %TARGARYEN
 casa(aegon_I,house_targaryen).
@@ -174,6 +174,18 @@ descendente(jon_snow,maester_aemon).
 descendente(jon_snow,aegon_V).
 descendente(jon_snow,jaehaerys_II).
 descendente(jon_snow,rhaelle).
+descendente(raenys,aegon_I).
+descendente(raenys,maekar_I).
+descendente(raenys,maester_aemon).
+descendente(raenys,aegon_V).
+descendente(raenys,jaehaerys_II).
+descendente(raenys,rhaelle).
+descendente(aegon,aegon_I).
+descendente(aegon,maekar_I).
+descendente(aegon,maester_aemon).
+descendente(aegon,aegon_V).
+descendente(aegon,jaehaerys_II).
+descendente(aegon,rhaelle).
 
 %BARATHEON
 casa(ormund,house_baratheon).
@@ -266,7 +278,7 @@ local(jaime,westerland).
 local(cersei,westerland).
 
 pai(jaime,joffrey).
-pai(jaime,myrcella0).
+pai(jaime,myrcella).
 pai(jaime,tommen).
 
 mae(cersei,joffrey).
@@ -274,7 +286,9 @@ mae(cersei,myrcella).
 mae(cersei,tommen).
 
 casados(jaime,cersei).
+casados(cersei,jaime).
 casados(tywin,joanna).
+casados(joanna,tywin).
 
 descendente(joffrey,tywin).
 descendente(joffrey,joanna).
@@ -298,12 +312,12 @@ mae(olenna,mace).
 
 casados(luthor,olenna).
 casados(olenna,luthor).
-casados(renly,magaery).
-casados(margaery,renly).
-casados(joffrey,margaery).
-casados(margaery,joffrey).
-casados(tommen,margaery).
-casados(margaery,tommen).
+casamento(renly,magaery).
+casamento(margaery,renly).
+casamento(joffrey,margaery).
+casamento(margaery,joffrey).
+casamento(tommen,margaery).
+casamento(margaery,tommen).
 
 descendente(margaery,luthor).
 descendente(margaery,olenna).
@@ -332,8 +346,21 @@ mae(elia,aegon).
 casados(rhaegar,elia).
 casados(elia,rhaegar).
 
+irmaos(doran,elia).
+irmaos(doran,oberyn).
+irmaos(elia,doran).
+irmaos(elia,oberyn).
+irmaos(oberyn,doran).
+irmaos(oberyn,elia).
+
 %%%%%% REGRAS
 
 %IRMÃO
-irmão(X,Y) :- pai(Z,X), pai(Z,Y), X\=Y.
-irmão(X,Y) :- mae(Z,X), mae(Z,Y), X\=Y.
+irmão(X,Y) :- pai(Z,X), pai(Z,Y), X\=Y; mae(Z,X), mae(Z,Y), X\=Y; irmaos(X,Y), X\=Y.
+
+%CASADOS
+casados(X,Y) :- pai(X,Z), mae(Y,Z), X\=Y; mae(X,Z), pai(Y,Z), X\=Y; casamento(X,Y), X\=Y.
+
+%CASAS RELACIONADAS
+
+%DESCENDENTES
