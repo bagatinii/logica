@@ -2,10 +2,7 @@
 :- discontiguous local/2.
 :- discontiguous pai/2.
 :- discontiguous mae/2.
-:- discontiguous casados/2.
 :- discontiguous casamento/2.
-:- discontiguous casas_relacionadas/2.
-:- discontiguous descendente/2.
 
 %%%%%% ORGANIZAÇÃO CASAS (FATOS)
 
@@ -20,8 +17,6 @@ pai(jon,robin).
 
 mae(lysa,robin).
 
-casados(jon,lysa).
-casados(lysa,jon).
 casamento(little_finger,lysa).
 casamento(lysa,little_finger).
 
@@ -94,26 +89,10 @@ mae(catelyn,rickon).
 mae(catelyn,theon_greyjoy).
 mae(lyanna,jon_snow).
 
-casados(eddard,catelyn).
-casados(catelyn,eddard).
-casados(rhaegar,lyanna).
-casados(lyanna,rhaegar).
 casamento(robb,talisa).
 casamento(talisa,robb).
 casamento(ramsay_bolton,sansa).
 casamento(sansa,ramsay_bolton).
-
-descendente(robb,rickard).
-descendente(robb,hoster).
-descendente(sansa,rickard).
-descendente(sansa,hoster).
-descendente(arya,rickard).
-descendente(arya,hoster).
-descendente(brandon_II,rickard).
-descendente(brandon_II,hoster).
-descendente(rickon,rickard).
-descendente(rickon,hoster).
-descendente(jon_snow,rickard).
 
 %TARGARYEN
 casa(aegon_I,house_targaryen).
@@ -140,52 +119,6 @@ pai(rhaegar,raenys).
 pai(rhaegar,aegon).
 
 mae(rhaelle,steffon).
-
-descendente(maekar_I,aegon_I).
-descendente(maester_aemon,aegon_I).
-descendente(aegon_V,aegon_I).
-descendente(jaehaerys_II,aegon_I).
-descendente(jaehaerys_II,maekar_I).
-descendente(aerys_II,aegon_I).
-descendente(aerys_II,maekar_I).
-descendente(aerys_II,maester_aemon).
-descendente(aerys_II,aegon_V).
-descendente(rhaegar,aegon_I).
-descendente(rhaegar,maekar_I).
-descendente(rhaegar,maester_aemon).
-descendente(rhaegar,aegon_V).
-descendente(rhaegar,jaehaerys_II).
-descendente(rhaegar,rhaelle).
-descendente(viserys,aegon_I).
-descendente(viserys,maekar_I).
-descendente(viserys,maester_aemon).
-descendente(viserys,aegon_V).
-descendente(viserys,jaehaerys_II).
-descendente(viserys,rhaelle).
-descendente(daenerys,aegon_I).
-descendente(daenerys,maekar_I).
-descendente(daenerys,maester_aemon).
-descendente(daenerys,aegon_V).
-descendente(daenerys,jaehaerys_II).
-descendente(daenerys,rhaelle).
-descendente(jon_snow,aegon_I).
-descendente(jon_snow,maekar_I).
-descendente(jon_snow,maester_aemon).
-descendente(jon_snow,aegon_V).
-descendente(jon_snow,jaehaerys_II).
-descendente(jon_snow,rhaelle).
-descendente(raenys,aegon_I).
-descendente(raenys,maekar_I).
-descendente(raenys,maester_aemon).
-descendente(raenys,aegon_V).
-descendente(raenys,jaehaerys_II).
-descendente(raenys,rhaelle).
-descendente(aegon,aegon_I).
-descendente(aegon,maekar_I).
-descendente(aegon,maester_aemon).
-descendente(aegon,aegon_V).
-descendente(aegon,jaehaerys_II).
-descendente(aegon,rhaelle).
 
 %BARATHEON
 casa(ormund,house_baratheon).
@@ -217,54 +150,6 @@ pai(robert,joffrey).
 pai(robert,myrcella).
 pai(robert,tommen).
 
-casados(ormund,rhaelle).
-casados(rhaelle,ormund).
-casados(robert,cersei).
-casados(cersei,robert).
-
-descendente(steffon,aegon_I).
-descendente(steffon,maekar_I).
-descendente(steffon,maester_aemon).
-descendente(robert,aegon_I).
-descendente(robert,maekar_I).
-descendente(robert,maester_aemon).
-descendente(robert,rhaelle).
-descendente(robert,ormund).
-descendente(stannis,aegon_I).
-descendente(stannis,maekar_I).
-descendente(stannis,maester_aemon).
-descendente(stannis,rhaelle).
-descendente(stannis,ormund).
-descendente(renly,aegon_I).
-descendente(renly,maekar_I).
-descendente(renly,maester_aemon).
-descendente(renly,rhaelle).
-descendente(renly,ormund).
-descendente(shireen,aegon_I).
-descendente(shireen,maekar_I).
-descendente(shireen,maester_aemon).
-descendente(shireen,rhaelle).
-descendente(shireen,ormund).
-descendente(shireen,steffon).
-descendente(joffrey,aegon_I).
-descendente(joffrey,maekar_I).
-descendente(joffrey,maester_aemon).
-descendente(joffrey,rhaelle).
-descendente(joffrey,ormund).
-descendente(joffrey,steffon).
-descendente(myrcella,aegon_I).
-descendente(myrcella,maekar_I).
-descendente(myrcella,maester_aemon).
-descendente(myrcella,rhaelle).
-descendente(myrcella,ormund).
-descendente(myrcella,steffon).
-descendente(tommen,aegon_I).
-descendente(tommen,maekar_I).
-descendente(tommen,maester_aemon).
-descendente(tommen,rhaelle).
-descendente(tommen,ormund).
-descendente(tommen,steffon).
-
 %LANNISTER
 casa(tywin,house_lannister).
 casa(joanna,house_lannister).
@@ -285,18 +170,6 @@ mae(cersei,joffrey).
 mae(cersei,myrcella).
 mae(cersei,tommen).
 
-casados(jaime,cersei).
-casados(cersei,jaime).
-casados(tywin,joanna).
-casados(joanna,tywin).
-
-descendente(joffrey,tywin).
-descendente(joffrey,joanna).
-descendente(myrcella,tywin).
-descendente(myrcella,joanna).
-descendente(tommen,tywin).
-descendente(tommen,joanna).
-
 %TYRELL
 casa(luthor,house_tyrell).
 casa(olenna,house_tyrel).
@@ -310,19 +183,12 @@ pai(mace,loras).
 
 mae(olenna,mace).
 
-casados(luthor,olenna).
-casados(olenna,luthor).
 casamento(renly,magaery).
 casamento(margaery,renly).
 casamento(joffrey,margaery).
 casamento(margaery,joffrey).
 casamento(tommen,margaery).
 casamento(margaery,tommen).
-
-descendente(margaery,luthor).
-descendente(margaery,olenna).
-descendente(loras,luthor).
-descendente(loras,olenna).
 
 %MARTELL
 casa(doran,house_martell).
@@ -342,9 +208,6 @@ pai(oberyn,sand_snakes).
 
 mae(elia,raenys).
 mae(elia,aegon).
-
-casados(rhaegar,elia).
-casados(elia,rhaegar).
 
 irmaos(doran,elia).
 irmaos(doran,oberyn).
