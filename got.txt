@@ -362,7 +362,7 @@ irmão(X,Y) :- pai(Z,X), pai(Z,Y), X\=Y; mae(Z,X), mae(Z,Y), X\=Y; irmaos(X,Y), 
 casados(X,Y) :- pai(X,Z), mae(Y,Z), X\=Y; mae(X,Z), pai(Y,Z), X\=Y; casamento(X,Y), X\=Y.
 
 %CASAS RELACIONADAS
-casas_relacionadas(X,Y) :- (casados(W,Z), casa(W,X), casa(Z,Y)); (casados(W,Z), casa(W,Y), casa(Z,X)).
+casas_relacionadas(X,Y) :- (casados(W,Z), casa(W,X), casa(Z,Y)); (casados(W,Z), casa(W,Y), casa(Z,X)); (casamento(W,Z), casa(W,Y), casa(Z,Y)); (casamento(W,Z), casa(Z,X), casa(W,Y)). 
 
 %DESCENDENTES
-descendente(X,Y) :- once((pai(X,Y);mae(X,Y))); ((pai(X,Z);mae(X,Z)),(pai(Z,Y);mae(Z,Y))); ((pai(X,W);mae(X,W)),(pai(W,Z); mae(W,Z)),(pai(Z,Y);mae(Z,Y))); ((pai(X,P);mae(X,P)),(pai(P,W) mae(P,W)),(pai(W,Z);mae(W,Z)),(pai(Z,Y);mae(Z,Y))); ((pai(X,Q);mae(X,Q)),(pai(Q,P);mae(Q,P)),(pai(P,W);mae(P,W)),(pai(W,Z);mae(W,Z)),(pai(Z,Y;mae(Z,Y))); ((pai(X,K);mae(X,K)),(pai(K,Q);mae(K,Q)),(pai(Q,P);mae(Q,P)),(pai(P,W);mae(P,W)),(pai(W,Z);mae(W,Z)),(pai(Z,Y);mae(Z,Y)))).
+descendente(X,Y) :- ((pai(X,Y);mae(X,Y))); ((pai(X,Z);mae(X,Z)),(pai(Z,Y);mae(Z,Y))); ((pai(X,W);mae(X,W)),(pai(W,Z);mae(W,Z)),(pai(Z,Y);mae(Z,Y))); ((pai(X,P);mae(X,P)),(pai(P,W);mae(P,W)),(pai(W,Z);mae(W,Z)),(pai(Z,Y);mae(Z,Y))); ((pai(X,Q);mae(X,Q)),(pai(Q,P);mae(Q,P)),(pai(P,W);mae(P,W)),(pai(W,Z);mae(W,Z)),(pai(Z,Y;mae(Z,Y))); ((pai(X,K);mae(X,K)),(pai(K,Q);mae(K,Q)),(pai(Q,P);mae(Q,P)),(pai(P,W);mae(P,W)),(pai(W,Z);mae(W,Z)),(pai(Z,Y);mae(Z,Y)))).
