@@ -20,8 +20,6 @@ mae(lysa,robin).
 casamento(little_finger,lysa).
 casamento(lysa,little_finger).
 
-descendente(robin,hoster).
-
 %SEM CASA
 pai(walder_frey,rosan_frey).
 pai(roose_bolton,ramsay_bolton).
@@ -107,6 +105,7 @@ casa(viserys,house_baratheon).
 casa(daenerys,house_baratheon).
 casa(jon_snow,house_targaryen).
 
+pai(aegon_I,maekar_I).
 pai(maekar_I,maester_aemon).
 pai(maekar_I,aegon_V).
 pai(aegon_V,jaehaerys_II).
@@ -219,7 +218,7 @@ irmaos(oberyn,elia).
 %%%%%% REGRAS
 
 %IRMÃO
-irmão(X,Y) :- pai(Z,X), pai(Z,Y), X\=Y; mae(Z,X), mae(Z,Y), X\=Y; irmaos(X,Y), X\=Y.
+irmao(X,Y) :- pai(Z,X), pai(Z,Y), X\=Y; mae(Z,X), mae(Z,Y), X\=Y; irmaos(X,Y), X\=Y.
 
 %CASADOS
 casados(X,Y) :- pai(X,Z), mae(Y,Z), X\=Y; mae(X,Z), pai(Y,Z), X\=Y; casamento(X,Y), X\=Y.
